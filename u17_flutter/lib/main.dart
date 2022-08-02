@@ -35,24 +35,15 @@ class RootPage extends StatefulWidget {
 class _RootPageState extends State<RootPage> {
 
   int _currentIndex = 0;
-  Widget _currBody = HomePage();
+  late List<Widget> pages;
+
+  @override
+  void initState() {
+    super.initState();
+    pages = [HomePage(),ClassPage(),BookShelfPage(),MyPage()];
+  }
 
   _ontap(int index) {
-    switch (index) {
-      case 0:
-        _currBody = HomePage();
-        break;
-      case 1:
-        _currBody = ClassPage();
-        break;
-      case 2:
-        _currBody = BookShelfPage();
-        break;
-      case 3:
-        _currBody = MyPage();
-        break;
-    }
-
     setState(() {
       _currentIndex = index;
     });
@@ -71,7 +62,10 @@ class _RootPageState extends State<RootPage> {
     )).toList();
 
     return Scaffold(
-      body: _currBody,
+      body: IndexedStack(
+        index: _currentIndex,
+        children: pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Theme.of(context).primaryColor,
