@@ -7,9 +7,12 @@ class SubscribePage extends StatefulWidget {
   State<SubscribePage> createState() => _SubscribePageState();
 }
 
-class _SubscribePageState extends State<SubscribePage> {
+class _SubscribePageState extends State<SubscribePage> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Container();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

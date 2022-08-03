@@ -1,27 +1,34 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:u17_flutter/common/ImageConfig.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class EmptyLayout extends StatelessWidget  {
+class EmptyLayout extends StatefulWidget  {
 
   final String tipText;
   final EmptyType tipType;
   final TextStyle? tipTextStyle;
-  final double? iconWidth; //不需要高是因为用的BoxFit.cover
-  String? tipIcon;
+  final double? iconWidth;
 
-  EmptyLayout({
+  const EmptyLayout({Key? key,
     this.tipText = "暂无数据",
     this.tipType = EmptyType.DATA_EMPTY,
     this.tipTextStyle,
     this.iconWidth
-  });
+  }) : super(key: key);
+
+  @override
+  State<EmptyLayout> createState() => _EmptyLayoutState();
+}
+
+class _EmptyLayoutState extends State<EmptyLayout> {
+ //不需要高是因为用的BoxFit.cover
+  String? tipIcon;
 
   @override
   Widget build(BuildContext context) {
-    switch(tipType) {
+    switch(widget.tipType) {
       case EmptyType.LOADING:
         return Center(
           child: CupertinoActivityIndicator(
@@ -46,19 +53,19 @@ class EmptyLayout extends StatelessWidget  {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image(
-              width: iconWidth ?? 200.r,
+              width: widget.iconWidth ?? 200.r,
               fit: BoxFit.cover,
               image: AssetImage(tipIcon ?? ImageConfig.EmptyTipImg)
           ),
           Padding(
             padding: EdgeInsets.only(top: 4.r, bottom: 100.r),
             child: Text(
-              tipText,
+              widget.tipText,
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 14.sp,
                   color: Color(0x3D000000))
-                  .merge(tipTextStyle),
+                  .merge(widget.tipTextStyle),
             ),
           ),
         ],

@@ -19,7 +19,7 @@ class RefreshLayout extends StatelessWidget {
     return EasyRefresh(
         header: MaterialHeader(),
         child: child ?? Container(),
-        footer: MaterialFooter(),
+        footer: null,
         firstRefresh: false,
         onLoad: onLoad,
         onRefresh: onRefreshCallback);

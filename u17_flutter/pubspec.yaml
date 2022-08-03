@@ -29,10 +29,13 @@ dependencies:
 
   #UI组件
   #https://pub.flutter-io.cn/packages/fluttertoast
-  fluttertoast: ^8.0.8
+  fluttertoast: 8.0.8
 
   #https://pub.dev/packages/flutter_easyrefresh
-  flutter_easyrefresh: ^2.2.1
+  flutter_easyrefresh: 2.2.1
+
+  #https://pub.dev/packages/cached_network_image
+  cached_network_image: 3.1.0
 
 
 

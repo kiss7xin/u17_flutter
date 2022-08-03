@@ -54,15 +54,14 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: TabBarView(
                 controller: _controller,
-                children: const [
-                  RecommendPage(key: PageStorageKey("widget")),
-                  VipPage(key: PageStorageKey("vip")),
-                  SubscribePage(key: PageStorageKey("subscribe")),
-                  RankPage(key: PageStorageKey("rank")),
+                children: [
+                  const RecommendPage(),
+                  const VipPage(),
+                  const SubscribePage(),
+                  const RankPage(),
                 ],
               ),
             )
-
           ],
         )
     );

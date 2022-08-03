@@ -1,6 +1,6 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:u17_flutter/widgets/book_page.dart';
 import 'package:u17_flutter/widgets/class_page.dart';
 import 'package:u17_flutter/widgets/home_page.dart';
@@ -15,12 +15,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'U17_flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
-      ),
-      home: const RootPage(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 690),
+      builder: () {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'U17_flutter',
+          // You can use the library anywhere in the app even in theme
+          theme: ThemeData(
+            primarySwatch: Colors.lightGreen,
+            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+          ),
+          home: const RootPage(),
+        );
+      },
     );
   }
 }
@@ -40,7 +48,11 @@ class _RootPageState extends State<RootPage> {
   @override
   void initState() {
     super.initState();
-    pages = [HomePage(),ClassPage(),BookShelfPage(),MyPage()];
+    pages = [
+      const HomePage(),
+      const ClassPage(),
+      const BookShelfPage(),
+      const MyPage()];
   }
 
   _ontap(int index) {
